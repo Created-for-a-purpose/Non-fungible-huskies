@@ -1,5 +1,6 @@
-const mnemonic='milk list settle aisle cricket divide swing sudden music car assault region'
+
 const HDWalletProvider = require('@truffle/hdwallet-provider');
+require('dotenv').config();
 
 module.exports = {
 
@@ -14,7 +15,7 @@ module.exports = {
 
   // polygon mumbai test network
     matic : {
-      provider: () => new HDWalletProvider(mnemonic, `https://polygon-mumbai.g.alchemy.com/v2/LI3N54O-mGnneETEa8KiT1IkpWryj2EL`),
+      provider: () => new HDWalletProvider(process.env.mnemonic, `https://polygon-mumbai.g.alchemy.com/v2/${process.env.MUMBAI_API_KEY}`),
       network_id: 80001,       // mumbai's id
       confirmations: 2,    // # of confs to wait between deployments. (default: 0)
       timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
@@ -23,7 +24,7 @@ module.exports = {
 
     // sepolia testnet
     sepolia : {
-      provider: () => new HDWalletProvider(mnemonic, `https://eth-sepolia.g.alchemy.com/v2/chj3O5banYrH2sx-bQtFd2ABCHZRZQWt`),
+      provider: () => new HDWalletProvider(process.env.mnemonic, `https://eth-sepolia.g.alchemy.com/v2/${process.env.SEPOLIA_API_KEY}`),
       network_id: "11155111",       // sepolia's id
       confirmations: 2,    // # of confs to wait between deployments. (default: 0)
       timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
